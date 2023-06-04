@@ -1,0 +1,29 @@
+$colors: (
+	primary: #40B59F,
+	secondary: #C4DAD6,
+	background: #ffffff,
+	font: #363361,
+	_lightGrey: #c4d1cc,
+	_mediumGrey: #979797,
+);
+
+@function color($key) {
+	@if not map-has-key($colors, $key) {
+		@warn "Color `#{$key}` not found.";
+	}
+	@return map-get($colors, $key);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import './_text.scss';
+@import './_chatbot.scss';
+@import './_chatbot_header.scss';
+@import './_message.scss';
+@import './_swrilie.scss';
+@import './_input.scss';
+@import './_icons.scss';
+
+h1 {
+	color: color('font');
+}	
+

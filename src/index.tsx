@@ -1,11 +1,39 @@
 import React from 'react'
+import './styles/styles.scss'
+import { Chatbot } from './chatbot'
+import { Swrilie } from './components/swrilie'
+import { DataContextType } from './types/context'
 import { createRoot } from 'react-dom/client'
+import { DataContext, generateDataValue, getDataContextValue } from './contexts/data'
+import { useData } from './hooks/data'
+
 const App = () => {
+	const [state, setState] = React.useState<'Open' | 'Closed' | 'Opening' | 'Closing'>('Open')
+	const [getData, setData] = useData<DataContextType>(getDataContextValue())
+	const containerOpenClass = state === 'Open' || state === 'Opening' ? 'swril-chatbot-container-open' : 'swril-chatbot-container-closed'
+
+	const dataValue = generateDataValue(getData, setData)
+
+	const close = () => {
+		setState('Closing')
+		setTimeout(() => {
+			setState('Closed')
+		}, 500)
+	}
+
+	const open = () => {
+		setState('Opening')
+		setTimeout(() => {
+			setState('Open')
+		}, 800)
+	}
 
 	return (
-		<div>
-			<p>Hi, it's working</p>
-		</div>
+		<DataContext.Provider value={dataValue}>
+			<div className={ `swril-chatbot-container ${ containerOpenClass }` } onClick={ state === 'Closed' ? open : undefined }>
+				{state === 'Open' ? <Chatbot close={() => close()} /> : <Swrilie />}
+			</div>
+		</DataContext.Provider>
 	)
 }
 

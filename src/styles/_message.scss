@@ -1,0 +1,40 @@
+.swril-messages-container {
+	display: flex;
+	flex-direction: column;
+	overflow-y: scroll;
+}
+
+.swril-message {
+	max-width: 80%;
+	display: flex;
+	align-items: flex-end;
+	margin: 0.2rem 0;
+	div {
+		border: 0.2rem solid color('primary');
+		border-radius: 1.5rem 1.5rem 1.5rem 0;
+		padding: 0.5rem;
+		p {
+			line-height: 1rem;
+			font-size: 1rem;
+			margin: 0;
+		}
+	}
+}
+
+.swril-message-user {
+	flex-direction: row-reverse;
+	align-self: flex-end;
+	div {
+		border-radius: 1.5rem 1.5rem 0 1.5rem;
+	}
+}
+
+.swril-bot-icon {
+	height: 3rem;
+	width: 1.6rem;
+	margin: 0 0.7rem;
+}
+
+.swril-account-icon {
+	font-size: 3rem;
+}

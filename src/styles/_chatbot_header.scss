@@ -1,0 +1,27 @@
+
+.swril-chatbot-header {
+	border-bottom: 0.2rem solid color('primary');
+	width: 100%;
+	text-align: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.swril-close-button {
+	cursor: pointer;
+	font-size: 2rem;
+	margin: 0 1rem;
+}
+
+.swril-settings-button {
+	cursor: pointer;
+	font-size: 2rem;
+	margin: 0 1rem;
+}
+
+.swril-chatbot-title {
+	font-size: 1.8rem;
+	margin: 0 1rem;
+}
