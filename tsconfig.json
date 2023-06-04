@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "target": "es5",
+        "module": "es6",
+        "allowJs": true,
+        "rootDir": ".",
+		"jsx": "react",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "strict": true
+    }
+}
