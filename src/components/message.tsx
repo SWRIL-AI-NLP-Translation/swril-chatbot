@@ -11,6 +11,8 @@ export const ChatbotMessage = (props: {
 
 	const messageClass = message.bot ? 'swril-message-bot' : 'swril-message-user';
 
+	const link = message.service ? message.service.link.includes('http') ? message.service.link : `http://${message.service.link}` : '';
+
 	return (
 		<div className={`swril-message ${messageClass}`}>
 			{message.bot ? <img className="swril-bot-icon" src={`${process.env.CDN_URL}/static/swrilie.png`} alt="swrilie" /> :
@@ -20,7 +22,7 @@ export const ChatbotMessage = (props: {
 					<SWRILp>{message.service.title}</SWRILp>
 					<SWRILp>Address: {message.service.address}</SWRILp>
 					<SWRILp>Phone: {message.service.number}</SWRILp>
-					<SWRILp>Website: <a target='_blank' href={message.service.link}>{message.service.link}</a></SWRILp>
+					<SWRILp>Website: <a target='_blank' href={link}>{message.service.link}</a></SWRILp>
 				</>)}
 				{message.text && (
 					message.text.split('\n').map((paragraph, i) => {
