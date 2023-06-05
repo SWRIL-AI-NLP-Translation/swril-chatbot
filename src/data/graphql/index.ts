@@ -1,10 +1,8 @@
 import { GraphQLClient } from "../../modules/http";
 
-const production = true;
-
-const productionEndpoint = 'https://api.swril.ca';
-const devEndpoint = 'http://localhost:8080';
-
-const endpoint = (production ? productionEndpoint : devEndpoint) + '/graphql';
+const endpoint = process.env.API_URL + '/graphql';
+if (!process.env.API_URL) {
+  throw new Error('API_URL is not defined');
+}
 export const graphql = new GraphQLClient(endpoint);
 
