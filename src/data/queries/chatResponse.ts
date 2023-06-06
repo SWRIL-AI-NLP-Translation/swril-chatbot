@@ -8,15 +8,13 @@ import { graphql } from '../graphql';
 const CHAT_RESPONSE = `
 	query GetChatResponse($data: ChatInput!) {
 		getChatResponse(data: $data) {
-			response {
-				message
-				services {
-					title
-					number
-					link
-					address
-					distance
-				}
+			message
+			services {
+				title
+				number
+				link
+				address
+				distance
 			}
 		}
 	}
@@ -49,14 +47,18 @@ export const sendMessage = async (
 	})
 
 	try {
-		const res = await graphql.request<{data:{getChatResponse:{response:ChatResponseType}}}>(CHAT_RESPONSE, {
+		const res = await graphql.request<{data:{getChatResponse:ChatResponseType}}>(CHAT_RESPONSE, {
 			data: {
 				message: input,
-				previousMessages: data.messages,
+				previousMessages: data.messages.filter((message) => !message.service).map((message) => ({
+					text: message.text ?? '',
+					bot: message.bot,
+					id: message.id,
+				})),
 				language: data.language,
-				// TODO: USE INT WHEN CHANGED
-				searchRadius: data.searchRadius.toString(),
+				searchRadius: data.searchRadius,
 				postal: data.postalCode,
+				chatbotVersion: "MONKEY"
 			},
 		});
 		if (res.error) {
@@ -65,9 +67,7 @@ export const sendMessage = async (
 		if (!res.data.data.getChatResponse) {
 			return DataResponse.fatal('No response');
 		}
-		const chatResponse = res.data.data.getChatResponse.response;
-
-		console.log(chatResponse);
+		const chatResponse = res.data.data.getChatResponse;
 
 		addMessage({
 			text: chatResponse.message,

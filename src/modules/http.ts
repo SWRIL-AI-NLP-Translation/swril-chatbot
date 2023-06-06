@@ -1,9 +1,6 @@
 import { DataResponse, DataResponseType } from '../types/data';
 
-const validateURL = (url: string): boolean => {
-	const urlPattern = /^(https?:\/\/)?([\w.-]+)\.([a-z]{2,})(\/\S*)*$/;
-	return urlPattern.test(url);
-}
+
 
 const HTTPMethods = ['GET', 'POST', 'PUT', 'DELETE'] as const;
 type HTTPMethodType = typeof HTTPMethods[number];
@@ -16,9 +13,6 @@ export const MiniHTTPReq = async(
 ): Promise<DataResponseType<string>> => {
 	if (!HTTPMethods.includes(method)) {
 		return DataResponse.fatal('Invalid method');
-	}
-	if (!validateURL(url)) {
-		return DataResponse.fatal('Invalid URL');
 	}
 	try {
 		const response = await fetch(url, {
