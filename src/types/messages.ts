@@ -1,4 +1,4 @@
-import { ServiceType } from "./chatResponse";
+import { ServiceType } from './chatResponse'
 
 // type MessageContentType = 'Text' | 'Service'
 

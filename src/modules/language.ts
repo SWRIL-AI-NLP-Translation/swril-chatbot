@@ -1,5 +1,5 @@
-import { LanguageType, languages } from "../types/languages"
-import { Cookies } from "./cookies"
+import { LanguageType, languages } from '../types/languages'
+import { Cookies } from './cookies'
 
 export const languageMap: {[K in LanguageType]: string} = {
 	Chinese: 'zh-cn',

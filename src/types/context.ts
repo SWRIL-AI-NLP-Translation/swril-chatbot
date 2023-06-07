@@ -1,5 +1,5 @@
-import { LanguageType } from "./languages"
-import { MessageType } from "./messages"
+import { LanguageType } from './languages'
+import { MessageType } from './messages'
 
 export interface DataContextType {
 	language: LanguageType

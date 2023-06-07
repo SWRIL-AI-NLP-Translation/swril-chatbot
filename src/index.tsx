@@ -7,21 +7,21 @@ import { createRoot } from 'react-dom/client'
 import { DataContext, generateDataValue, getDataContextValue } from './contexts/data'
 import { useData } from './hooks/data'
 
-const App = () => {
+const App = (): JSX.Element => {
 	const [state, setState] = React.useState<'Open' | 'Closed' | 'Opening' | 'Closing'>('Open')
 	const [getData, setData] = useData<DataContextType>(getDataContextValue())
 	const containerOpenClass = state === 'Open' || state === 'Opening' ? 'swril-chatbot-container-open' : 'swril-chatbot-container-closed'
 
 	const dataValue = generateDataValue(getData, setData)
 
-	const close = () => {
+	const close = (): void => {
 		setState('Closing')
 		setTimeout(() => {
 			setState('Closed')
 		}, 500)
 	}
 
-	const open = () => {
+	const open = (): void => {
 		setState('Opening')
 		setTimeout(() => {
 			setState('Open')
@@ -39,9 +39,9 @@ const App = () => {
 
 const container = document.getElementById('swril-chatbot-div')
 if (!container) {
-  console.error('swril-chatbot-div not found, make sure to include it in your html like this: \n'
-  + '<div id="swril-chatbot-div"></div>')
+	console.error('swril-chatbot-div not found, make sure to include it in your html like this: \n'
+	+ '<div id="swril-chatbot-div"></div>')
 } else {
-  const root = createRoot(container) 
-  root.render(<App />)
+	const root = createRoot(container) 
+	root.render(<App />)
 }

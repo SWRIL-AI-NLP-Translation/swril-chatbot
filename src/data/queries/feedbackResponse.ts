@@ -4,4 +4,4 @@ export const FEEDBACK_RESPONSE = `
             response
 		}
 	}
-`;
+`

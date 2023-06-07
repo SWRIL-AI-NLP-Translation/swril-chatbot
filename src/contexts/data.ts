@@ -1,9 +1,9 @@
-import React from "react";
-import { DataContextType } from "../types/context";
-import { Cookies } from "../modules/cookies";
-import { getPostalCode } from "../modules/postalCode";
-import { MessageType, defaultMessage } from "../types/messages";
-import { getLanguage } from "../modules/language";
+import React from 'react'
+import { DataContextType } from '../types/context'
+import { Cookies } from '../modules/cookies'
+import { getPostalCode } from '../modules/postalCode'
+import { MessageType, defaultMessage } from '../types/messages'
+import { getLanguage } from '../modules/language'
 
 export const getDataContextValue = (): DataContextType => {
 	return {
@@ -23,9 +23,12 @@ interface DataValueType {
 
 export const DataContext = React.createContext<DataValueType>({
 	getData: () => getDataContextValue(),
-	setData: (newData: DataContextType) => { },
-	addData: (newData: Partial<DataContextType>) => { },
-	addMessage: (message: MessageType) => { },
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	setData: (newData: DataContextType) => (void 0),
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	addData: (newData: Partial<DataContextType>) => (void 0),
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	addMessage: (message: MessageType) => (void 0),
 })
 
 export const generateDataValue = (

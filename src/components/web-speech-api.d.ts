@@ -4,7 +4,7 @@ declare interface SpeechRecognition {
   interimResults: boolean;
   start(): void;
   stop(): void;
-  onresult: (event: any) => void;
+  onresult: (event: unknown) => void;
 }
 
 // declare var SpeechRecognition: {
@@ -15,4 +15,4 @@ declare interface SpeechRecognition {
 declare const webkitSpeechRecognition: {
   prototype: SpeechRecognition;
   new (): SpeechRecognition;
-};
+}

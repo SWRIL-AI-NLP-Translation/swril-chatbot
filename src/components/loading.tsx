@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const LoadingDots = () => {
+export const LoadingDots = (): JSX.Element => {
 	const [dots, setDots] = React.useState('.')
 
 	React.useEffect(() => {
@@ -19,5 +19,5 @@ export const LoadingDots = () => {
 		}
 	}, [])
 
-	return <p style={{width: '2rem', fontSize: '2rem'}}>{dots}</p>
+	return <p style={{ width: '2rem', fontSize: '2rem' }}>{dots}</p>
 }

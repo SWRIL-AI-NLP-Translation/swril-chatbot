@@ -1,4 +1,4 @@
-import React, { ReactNode, CSSProperties } from 'react';
+import React, { ReactNode, CSSProperties } from 'react'
 
 
 interface MyTextProps {
@@ -8,18 +8,18 @@ interface MyTextProps {
 }
 
 // Component that renders child text inside it
-export const SWRILp = ({children, className, style} : MyTextProps) => {
+export const SWRILp = ({ children, className, style }: MyTextProps): JSX.Element => {
 	return (
 		<p className={`swril-text ${className}`} style={style}>
-		  	{children}
+			{children}
 		</p>
-	);
+	)
 }
 	
-export const SWRILh1 = ({children, className, style} : MyTextProps) => {
+export const SWRILh1 = ({ children, className, style }: MyTextProps): JSX.Element => {
 	return (
 		<h1 className={`swril-text ${className}`} style={style}>
-		  	{children}
+			{children}
 		</h1>
-	);
+	)
 }

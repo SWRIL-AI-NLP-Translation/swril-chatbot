@@ -1,10 +1,11 @@
 {
   "name": "swril-chatbot",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "scripts": {
     "build": "webpack",
-    "dev": "onchange 'src/**/*' -- npm run build"
+    "dev": "onchange 'src/**/*' -- npm run build",
+    "lint": "npx eslint ."
   },
   "keywords": [],
   "author": "",
@@ -13,8 +14,12 @@
     "@types/node": "^20.2.5",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.9",
+    "@typescript-eslint/parser": "^5.59.9",
     "css-loader": "^6.8.1",
     "dotenv-webpack": "^8.0.1",
+    "eslint": "^8.42.0",
+    "eslint-plugin-react": "^7.32.2",
     "node-sass": "^9.0.0",
     "onchange": "^7.1.0",
     "sass": "^1.62.1",

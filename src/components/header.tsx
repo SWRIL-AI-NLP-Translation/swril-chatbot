@@ -1,9 +1,9 @@
-import React from 'react';
-import { SWRILh1 } from './text';
+import React from 'react'
+import { SWRILh1 } from './text'
 
-export const ChatbotHeader = ({close}: {
+export const ChatbotHeader = ({ close }: {
 	close: () => void;
-}) => {
+}): JSX.Element => {
 	return (
 		<header className="swril-chatbot-header">
 			<span className="material-symbols-outlined swril-close-button" onClick={close}>close_fullscreen</span>

@@ -1,9 +1,9 @@
-import { DataContextType } from '../../types/context';
-import { DataResponse, DataResponseType } from '../../types/data';
-import { ChatResponseType } from '../../types/chatResponse';
-import { validatePostalCode } from '../../modules/postalCode';
-import { MessageType } from '../../types/messages';
-import { graphql } from '../graphql';
+import { DataContextType } from '../../types/context'
+import { DataResponse, DataResponseType } from '../../types/data'
+import { ChatResponseType } from '../../types/chatResponse'
+import { validatePostalCode } from '../../modules/postalCode'
+import { MessageType } from '../../types/messages'
+import { graphql } from '../graphql'
 
 const CHAT_RESPONSE = `
 	query GetChatResponse($data: ChatInput!) {
@@ -18,7 +18,7 @@ const CHAT_RESPONSE = `
 			}
 		}
 	}
-`;
+`
 
 export const sendMessage = async (
 	input: string,
@@ -28,16 +28,16 @@ export const sendMessage = async (
 	addMessage({
 		text: input,
 		id: data.messages.length,
-	});
+	})
 
 	if (!data.postalCode) {
-		return DataResponse.fatal('No postal code');
+		return DataResponse.fatal('No postal code')
 	}
 	if (!validatePostalCode(data.postalCode)) {
-		return DataResponse.fatal('Invalid postal code');
+		return DataResponse.fatal('Invalid postal code')
 	}
 	if (input.length === 0) {
-		return DataResponse.fatal('Empty message');
+		return DataResponse.fatal('Empty message')
 	}
 
 	addMessage({
@@ -47,7 +47,7 @@ export const sendMessage = async (
 	})
 
 	try {
-		const res = await graphql.request<{data:{getChatResponse:ChatResponseType}}>(CHAT_RESPONSE, {
+		const res = await graphql.request<{ data: { getChatResponse: ChatResponseType }}>(CHAT_RESPONSE, {
 			data: {
 				message: input,
 				previousMessages: data.messages.filter((message) => !message.service).map((message) => ({
@@ -58,32 +58,32 @@ export const sendMessage = async (
 				language: data.language,
 				searchRadius: data.searchRadius,
 				postal: data.postalCode,
-				chatbotVersion: "MONKEY"
+				chatbotVersion: 'MONKEY'
 			},
-		});
+		})
 		if (res.error) {
 			return res
 		}
 		if (!res.data.data.getChatResponse) {
-			return DataResponse.fatal('No response');
+			return DataResponse.fatal('No response')
 		}
-		const chatResponse = res.data.data.getChatResponse;
+		const chatResponse = res.data.data.getChatResponse
 
 		addMessage({
 			text: chatResponse.message,
 			bot: true,
 			id: data.messages.length,
-		});
+		})
 		chatResponse.services.forEach((service) => {
 			addMessage({
 				service: service,
 				bot: true,
 				id: data.messages.length,
-			});
-		});
-		return DataResponse.success(null);
+			})
+		})
+		return DataResponse.success(null)
 	} catch (e) {
-		console.error(e);
-		return DataResponse.fatal('Error');
+		console.error(e)
+		return DataResponse.fatal('Error')
 	}
 }

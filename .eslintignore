@@ -1,0 +1,11 @@
+.DS_Store
+node_modules
+dist
+.env
+!.env.example
+.eslintrc.js
+webpack.config.js
+
+# Ignore files for NPM
+package.json
+package-lock.json

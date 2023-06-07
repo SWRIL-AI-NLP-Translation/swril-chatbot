@@ -1,4 +1,4 @@
-import { Cookies } from "./cookies"
+import { Cookies } from './cookies'
 
 export const validatePostalCode = (postalCode: string): boolean => {
 	const regex = /^[a-zA-Z]\d[a-zA-Z]$/

@@ -1,17 +1,20 @@
-import React from 'react';
+import React from 'react'
 
-export const useData = <T>(initialValue: T) => {
-	const [_data, internalSetData] = React.useState<T>(initialValue);
-	const dataRef = React.useRef(initialValue);
+export const useData = <T>(initialValue: T): readonly [
+	() => T,
+	(newValue: T) => void,
+] => {
+	const [, internalSetData] = React.useState<T>(initialValue)
+	const dataRef = React.useRef(initialValue)
   
-	const getData = () => {
-		return dataRef.current;
-	};
+	const getData = (): T => {
+		return dataRef.current
+	}
 
-	const setData = (newValue: T) => {
-		internalSetData(newValue);
-	  	dataRef.current = newValue;
-	};
+	const setData = (newValue: T): void => {
+		internalSetData(newValue)
+		dataRef.current = newValue
+	}
   
-	return [getData, setData] as const;
-};
+	return [getData, setData] as const
+}

@@ -4,10 +4,10 @@ export class DataError {
 		public level: 'fatal'|'warning'
 	) {}
 	static fatal(message: string): DataError {
-		return new this(message, 'fatal');
+		return new this(message, 'fatal')
 	}
 	static warning(message: string): DataError {
-		return new this(message, 'warning');
+		return new this(message, 'warning')
 	}
 }
 
@@ -35,9 +35,9 @@ export class DataResponse {
 		}
 	}
 	static fatal<T>(message: string): DataResponseType<T> {
-		return DataResponse.error(DataError.fatal(message));
+		return DataResponse.error(DataError.fatal(message))
 	}
 	static warning<T>(message: string): DataResponseType<T> {
-		return DataResponse.error(DataError.warning(message));
+		return DataResponse.error(DataError.warning(message))
 	}
 }
