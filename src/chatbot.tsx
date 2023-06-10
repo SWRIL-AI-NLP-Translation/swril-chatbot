@@ -9,7 +9,7 @@ import { SettingsModal } from './components/settingsModal'
 export const Chatbot = ({ close }: {close: () => void}): JSX.Element => {
 	const { getData } = React.useContext(DataContext)
 	const postalCodeSet = getData().postalCode !== undefined
-	const [settingsOpen, setSettingsOpen] = React.useState(true)
+	const [settingsOpen, setSettingsOpen] = React.useState(false)
 	return (
 		<>
 			{settingsOpen && <SettingsModal close={() => setSettingsOpen(false)} />}
