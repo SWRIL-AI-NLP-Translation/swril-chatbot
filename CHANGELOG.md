@@ -1,6 +1,16 @@
 # Changelog for swril-chatbot
 
 
+## [0.1.2] - 2023-06-09
+Created Settings Menu
+### Updates:
+- Implemented settings modal button
+- Updating Cookie settings
+- Added data to settings menu
+### Contributors
+- Zac Waite
+
+
 ## [0.1.1] - 2023-06-06
 Added linting with .eslintrc.js
 ### Updates:
