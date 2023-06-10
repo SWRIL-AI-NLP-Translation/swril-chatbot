@@ -66,11 +66,11 @@ export const ChatbotInput = (): JSX.Element => {
 
 	return (
 		<div className={'swril-input-container'}>
-			<span 
+			{/* <span 
 				className="material-symbols-outlined swril-mic-button" 
 				onClick={startStopRecognition}
 				style={{ color: isRecording ? 'red' : '' }}
-			>mic</span>
+			>mic</span> */}
 			<input
 				type="text"
 				className="swril-input-field"

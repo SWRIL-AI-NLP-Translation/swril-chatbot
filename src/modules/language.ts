@@ -2,6 +2,7 @@ import { LanguageType, languages } from '../types/languages'
 import { Cookies } from './cookies'
 
 export const languageMap: {[K in LanguageType]: string} = {
+	'Auto Detect': 'Auto Detect',
 	Chinese: 'zh-cn',
 	English: 'en',
 	Afrikaans: 'af',
@@ -31,8 +32,8 @@ export const languageMap: {[K in LanguageType]: string} = {
 	Amharic: 'am',
 } as const
 
-export const getLanguage = (): LanguageType | undefined => {
+export const getLanguage = (): LanguageType => {
 	const language = Cookies.get('swril-language')
-	return (language && languages.includes(language as LanguageType)) ? language as LanguageType : undefined
+	return (language && languages.includes(language as LanguageType)) ? language as LanguageType : 'Auto Detect'
 }
 

@@ -8,8 +8,8 @@ import { getLanguage } from '../modules/language'
 export const getDataContextValue = (): DataContextType => {
 	return {
 		postalCode: getPostalCode(),
-		language: getLanguage() ?? 'English',
-		searchRadius: parseInt(Cookies.get('swril-search-radius') ?? '50'),
+		language: getLanguage() ?? 'Auto Detect',
+		searchRadius: parseInt(Cookies.get('swril-search-radius') ?? '15'),
 		messages: [defaultMessage],
 	}
 }
@@ -34,17 +34,25 @@ export const DataContext = React.createContext<DataValueType>({
 export const generateDataValue = (
 	getData: () => DataContextType,
 	setData: (newData: DataContextType) => void,
-): DataValueType => ({
-	getData,
-	setData,
-	addData: (newData: Partial<DataContextType>) => {
-		setData({ ...getData(), ...newData })
-	},
-	addMessage: (message: MessageType) => {
-		const newMessages = [...getData().messages]
-		if (newMessages[newMessages.length -1]?.loading) newMessages.pop()
-		newMessages.push(message)
-		setData({ ...getData(), messages: newMessages })
-	},
-})
+): DataValueType => {
+	const newSetData = (newData: DataContextType): void => {
+		Cookies.set('swril-postal-code', newData.postalCode??'')
+		Cookies.set('swril-language', newData.language??'')
+		Cookies.set('swril-search-radius', newData.searchRadius?.toString()??'')
+		setData(newData)
+	}
+	return {
+		getData,
+		setData: newSetData,
+		addData: (newData: Partial<DataContextType>) => {
+			newSetData({ ...getData(), ...newData })
+		},
+		addMessage: (message: MessageType) => {
+			const newMessages = [...getData().messages]
+			if (newMessages[newMessages.length -1]?.loading) newMessages.pop()
+			newMessages.push(message)
+			setData({ ...getData(), messages: newMessages })
+		},
+	}
+}
 

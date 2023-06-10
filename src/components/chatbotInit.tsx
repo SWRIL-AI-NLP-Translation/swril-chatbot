@@ -1,4 +1,3 @@
-import { Cookies } from '../modules/cookies'
 import { DataContext } from '../contexts/data'
 import React from 'react'
 import { validatePostalCode } from '../modules/postalCode'
@@ -9,7 +8,6 @@ export const ChatbotInit = (): JSX.Element => {
 	const submitPostalCode = (): void => {
 		if (validatePostalCode(newPostalCode)){
 			addData({ postalCode: newPostalCode })
-			Cookies.set('swril-postal-code', newPostalCode)
 		} else {
 			alert('Invalid postal code')
 		}

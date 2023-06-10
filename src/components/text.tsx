@@ -23,3 +23,11 @@ export const SWRILh1 = ({ children, className, style }: MyTextProps): JSX.Elemen
 		</h1>
 	)
 }
+
+export const SWRILh2 = ({ children, className, style }: MyTextProps): JSX.Element => {
+	return (
+		<h2 className={`swril-text ${className}`} style={style}>
+			{children}
+		</h2>
+	)
+}

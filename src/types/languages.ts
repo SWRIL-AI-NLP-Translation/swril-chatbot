@@ -1,4 +1,5 @@
 export const languages = [
+	'Auto Detect',
 	'Afrikaans',
 	'Amharic',
 	'Arabic',
