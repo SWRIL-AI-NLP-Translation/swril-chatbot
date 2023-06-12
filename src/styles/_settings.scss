@@ -1,26 +1,3 @@
-.swril-settings-modal-background {
-	height: 100%;
-	width: 100%;
-	background-color: rgba(0,0,0,0.5);
-	position: absolute;
-}
-
-.swril-settings-modal {
-	background-color: color('background');
-	border: 0.15rem solid color('primary');
-	border-radius: 1rem;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	padding: 0.5rem 1rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	height: 50%;
-	width: 50%;
-}
-
 .swril-settings-header {
 	width: 100%;
 	text-align: center;
