@@ -22,7 +22,9 @@ $colors: (
 @import './_swrilie.scss';
 @import './_input.scss';
 @import './_settings.scss';
+@import './_modal.scss';
 @import './_icons.scss';
+@import './_message_feedback.scss';
 
 h1 {
 	color: color('font');
