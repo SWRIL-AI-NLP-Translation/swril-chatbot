@@ -1,5 +1,13 @@
 # Changelog for swril-chatbot
 
+## [0.1.4] - 2023-06-11
+Fixed Chrome UI bugs
+### Updates:
+- Updated message format
+- Changed message colours
+### Contributors
+- Zac Waite
+
 ## [0.1.3] - 2023-06-11
 Created Feedback Bubble and Modal
 ### Updates:
