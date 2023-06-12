@@ -1,5 +1,14 @@
 # Changelog for swril-chatbot
 
+## [0.1.3] - 2023-06-11
+Created Feedback Bubble and Modal
+### Updates:
+- Built message feedback icons
+- Refactored modal to be a generic component
+- Created feedback modal
+- Integrated feedback icons with modal
+### Contributors
+- Zac Waite
 
 ## [0.1.2] - 2023-06-09
 Created Settings Menu
