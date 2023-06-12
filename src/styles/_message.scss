@@ -6,7 +6,7 @@
 }
 
 .swril-message {
-	max-width: 80%;
+	max-width: 90%;
 	display: flex;
 	align-items: flex-end;
 	margin: 0.5rem 0;
@@ -18,11 +18,18 @@
 	border-radius: 1rem 1rem 1rem 0;
 	padding: 0.7rem;
 	position: relative;
-	p {
+	max-width: 80%;
+	p, a {
 		line-height: 1rem;
 		font-size: 1rem;
 		margin: 0;
+		max-width: 100%;
+		word-wrap: break-word;
 	}
+}
+
+.swril-message-bot .swril-message-box {
+	background-color: color('primary');
 }
 
 .swril-message-user {
