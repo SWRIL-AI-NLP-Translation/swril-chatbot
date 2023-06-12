@@ -4,6 +4,7 @@ import { ChatResponseType } from '../../types/chatResponse'
 import { validatePostalCode } from '../../modules/postalCode'
 import { MessageType } from '../../types/messages'
 import { graphql } from '../graphql'
+import { generateId } from '../../modules/id'
 
 const CHAT_RESPONSE = `
 	query GetChatResponse($data: ChatInput!) {
@@ -27,7 +28,7 @@ export const sendMessage = async (
 ): Promise<DataResponseType<null>> => {
 	addMessage({
 		text: input,
-		id: data.messages.length,
+		id: generateId(),
 	})
 
 	if (!data.postalCode) {
@@ -43,14 +44,14 @@ export const sendMessage = async (
 	addMessage({
 		loading: true,
 		bot: true,
-		id: -1,
+		id: 'Loading',
 	})
 
 	try {
 		const res = await graphql.request<{ data: { getChatResponse: ChatResponseType }}>(CHAT_RESPONSE, {
 			data: {
 				message: input,
-				previousMessages: data.messages.filter((message) => !message.service).map((message) => ({
+				previousMessages: data.messages.filter((message) => !message.service && !(message.id === 'Initial')).map((message) => ({
 					text: message.text ?? '',
 					bot: message.bot,
 					id: message.id,
@@ -72,13 +73,13 @@ export const sendMessage = async (
 		addMessage({
 			text: chatResponse.message,
 			bot: true,
-			id: data.messages.length,
+			id: generateId()
 		})
 		chatResponse.services.forEach((service) => {
 			addMessage({
 				service: service,
 				bot: true,
-				id: data.messages.length,
+				id: generateId()
 			})
 		})
 		return DataResponse.success(null)

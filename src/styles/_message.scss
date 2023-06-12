@@ -2,22 +2,26 @@
 	display: flex;
 	flex-direction: column;
 	overflow-y: scroll;
+	height: 100%;
 }
 
 .swril-message {
 	max-width: 80%;
 	display: flex;
 	align-items: flex-end;
-	margin: 0.2rem 0;
-	div {
-		background-color: color('secondary');
-		border-radius: 1rem 1rem 1rem 0;
-		padding: 0.7rem;
-		p {
-			line-height: 1rem;
-			font-size: 1rem;
-			margin: 0;
-		}
+	margin: 0.5rem 0;
+	overflow:visible;
+}
+
+.swril-message-box {
+	background-color: color('secondary');
+	border-radius: 1rem 1rem 1rem 0;
+	padding: 0.7rem;
+	position: relative;
+	p {
+		line-height: 1rem;
+		font-size: 1rem;
+		margin: 0;
 	}
 }
 

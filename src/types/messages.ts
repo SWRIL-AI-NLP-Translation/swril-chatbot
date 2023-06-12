@@ -6,12 +6,13 @@ export type MessageType = {
 	text?: string;
 	service?: ServiceType;
 	bot?: boolean;
-	id: number;
+	id: number | 'Initial' | 'Loading';
 	loading?: boolean;
+	positiveFeedback?: boolean;
 }
 
 export const defaultMessage: MessageType = {
 	text: 'My name is swrilie. \n How may I help you?',
 	bot: true,
-	id: 0,
+	id: 'Initial',
 }
