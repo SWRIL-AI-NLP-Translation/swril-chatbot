@@ -1,5 +1,13 @@
 # Changelog for swril-chatbot
 
+## [0.2.0] - 2023-07-03
+Integrated with new chat schema, feedback integrated
+### Updates:
+- Updated chat integration for array schema
+- Integrated feedback with graphql
+### Contributors
+- Zac Waite
+
 ## [0.1.4] - 2023-06-11
 Fixed Chrome UI bugs
 ### Updates:
