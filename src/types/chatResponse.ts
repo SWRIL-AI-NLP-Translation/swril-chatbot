@@ -1,6 +1,7 @@
 export interface ChatResponseType {
-	message: string;
-	services: ServiceType[];
+	id: string;
+	message?: string;
+	service?: ServiceType;
 }
 
 export interface ServiceType {

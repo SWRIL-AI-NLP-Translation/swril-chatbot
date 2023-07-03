@@ -1,3 +1,3 @@
-export const generateId = (): number => {
-	return Math.random() * 1000000000
+export const generateId = (): string => {
+	return Math.round(Math.random() * 1000000000).toString()
 }

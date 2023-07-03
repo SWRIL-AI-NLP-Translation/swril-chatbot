@@ -6,7 +6,7 @@ export type MessageType = {
 	text?: string;
 	service?: ServiceType;
 	bot?: boolean;
-	id: number | 'Initial' | 'Loading';
+	id: string;
 	loading?: boolean;
 	positiveFeedback?: boolean;
 }

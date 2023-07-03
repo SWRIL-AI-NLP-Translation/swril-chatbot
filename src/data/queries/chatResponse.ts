@@ -9,8 +9,9 @@ import { generateId } from '../../modules/id'
 const CHAT_RESPONSE = `
 	query GetChatResponse($data: ChatInput!) {
 		getChatResponse(data: $data) {
+			id
 			message
-			services {
+			service {
 				title
 				number
 				link
@@ -48,7 +49,7 @@ export const sendMessage = async (
 	})
 
 	try {
-		const res = await graphql.request<{ data: { getChatResponse: ChatResponseType }}>(CHAT_RESPONSE, {
+		const res = await graphql.request<{ data: { getChatResponse: ChatResponseType[] }}>(CHAT_RESPONSE, {
 			data: {
 				message: input,
 				previousMessages: data.messages.filter((message) => !message.service && !(message.id === 'Initial')).map((message) => ({
@@ -68,18 +69,14 @@ export const sendMessage = async (
 		if (!res.data.data.getChatResponse) {
 			return DataResponse.fatal('No response')
 		}
-		const chatResponse = res.data.data.getChatResponse
+		const messages = res.data.data.getChatResponse
 
-		addMessage({
-			text: chatResponse.message,
-			bot: true,
-			id: generateId()
-		})
-		chatResponse.services.forEach((service) => {
+		messages.forEach((msg) => {
 			addMessage({
-				service: service,
+				text: msg.message,
+				service: msg.service,
 				bot: true,
-				id: generateId()
+				id: msg.id
 			})
 		})
 		return DataResponse.success(null)
