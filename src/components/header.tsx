@@ -8,12 +8,11 @@ export const ChatbotHeader = ({ close, openSettings }: {
 	return (
 		<header className="swril-chatbot-header">
 			<span 
-				className="material-symbols-outlined swril-close-button" 
-				onClick={close}>close_fullscreen</span>
-			<SWRILh1 className="swril-chatbot-title">Chatbot</SWRILh1>
-			<span 
 				className="material-symbols-outlined swril-settings-button"
 				onClick={openSettings}>settings</span>
+			<span 
+				className="material-symbols-outlined swril-close-button" 
+				onClick={close}>remove</span>
 		</header>
 	)
 }
