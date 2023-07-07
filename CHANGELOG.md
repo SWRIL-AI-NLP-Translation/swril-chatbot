@@ -1,5 +1,14 @@
 # Changelog for swril-chatbot
 
+## [0.2.1] - 2023-07-07
+New Chatbot UI
+### Updates:
+- Updated colour schemes
+- Updated UI across messages, feedback, input
+- Improved settings UX
+### Contributors
+- Zac Waite
+
 ## [0.2.0] - 2023-07-03
 Integrated with new chat schema, feedback integrated
 ### Updates:
