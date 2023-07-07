@@ -49,7 +49,7 @@ export const FeedbackModal = ({ feedback, close }: {
 		close()
 	}
 	return (
-		<GenericModal title={'Feedback'} close={close}>
+		<GenericModal close={close}>
 			<SWRILp>Confirm {emoji} feedback for this message?</SWRILp>
 			<div className="swril-feedback-confirmation">
 				<button onClick={close}>Cancel</button>

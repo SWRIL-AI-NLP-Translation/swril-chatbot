@@ -10,7 +10,13 @@ export const SettingsModal = ({ close }: {close: () => void}): JSX.Element => {
 
 	const { postalCode, searchRadius, language } = getData()
 	const handleSearchRadiusChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-		addData({ searchRadius: parseInt(e.target.value) })
+		searchRadiusChange(parseInt(e.target.value))
+	}
+	const searchRadiusChange = (newRadius: number): void => {
+		if (isNaN(newRadius)) newRadius = 0
+		if (newRadius < 0) newRadius = 0
+		if (newRadius > 30) newRadius = 30
+		addData({ searchRadius: newRadius })
 	}
 	const handlePostalCodeChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
 		addData({ postalCode: e.target.value })
@@ -28,21 +34,26 @@ export const SettingsModal = ({ close }: {close: () => void}): JSX.Element => {
 
 
 	return (
-		<GenericModal title={'Settings'} close={tryClose}>
-			<div className='swril-settings-radius-slider'>
-				<div>
-					<span className='material-symbols-outlined'>public</span>
-					<SWRILp className={'swril-search-radius-label'}>Search Radius: {searchRadius} km</SWRILp>
+		<GenericModal close={tryClose}>
+			<div className='swril-settings-radius'>
+				<SWRILp>Search Radius:</SWRILp>
+				<div className='swril-number-input-container'>
+					<button onClick={() => searchRadiusChange(searchRadius - 1)}>-</button>
+					<input type='text' min='1' max='30' value={searchRadius} onInput={handleSearchRadiusChange}/>
+					<button onClick={() => searchRadiusChange(searchRadius + 1)}>+</button>
 				</div>
-				<input type='range' min='1' max='30' value={searchRadius} onInput={handleSearchRadiusChange}/>
+				<SWRILp>km</SWRILp>
+				{/* <input type='range' min='1' max='30' value={searchRadius} onInput={handleSearchRadiusChange}/> */}
 			</div>
 			<div className='swril-settings-postal-code'>
-				<span className='material-symbols-outlined swril-settings-close-button'>distance</span>
-				<SWRILp className={'swril-postal-code-label'}>Postal: </SWRILp>
-				<input type='text' value={postalCode} onChange={handlePostalCodeChange}/>
+				<SWRILp className={'swril-postal-code-label'}>Postal code: </SWRILp>
+				<input type='text' 
+					value={postalCode} 
+					onChange={handlePostalCodeChange}
+					placeholder='_ _ _'
+				/>
 			</div>
 			<div className='swril-settings-language'>
-				<span className='material-symbols-outlined swril-settings-close-button'>translate</span>
 				<SWRILp className={'swril-language-label'}>Language: </SWRILp>
 				<select onChange={handleLanguageChange}>
 					{languages.map((lang) => (
