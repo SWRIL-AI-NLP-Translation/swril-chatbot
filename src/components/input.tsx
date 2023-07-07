@@ -79,12 +79,11 @@ export const ChatbotInput = (): JSX.Element => {
 				onKeyDown={(e) => {
 					if (e.key === 'Enter') trySendMessage()
 				}}
-				placeholder='Type here...'
+				placeholder='type a message'
 			/>
-			<button
-				onClick={trySendMessage}
-				className={'swril-send-button'}
-			>Send</button>
+			<span 
+				className="material-symbols-outlined swril-send-button" 
+				onClick={trySendMessage}>send</span>
 		</div>
 	)
 }
