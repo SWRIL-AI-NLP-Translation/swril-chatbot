@@ -1,22 +1,20 @@
 .swril-message-feedback {
-	position: absolute;
-	bottom: -0.9rem;
-	border: 0.15rem solid color('secondary');
 	border-radius: 0.5rem;
+	display: flex;
 	background-color: white;
 	height: 1.2rem;
 	padding: 0.1rem;
-	&:first-child {
-		margin-right: 0.1rem
-	}
 	.material-symbols-outlined {
-		font-size: 1.2rem;
+		&:first-child {
+			margin-right: 0.3rem
+		}
+		font-size: 1rem;
 		margin: 0;
 	}
 	.swril-feedback-up-button-selectable {
 		cursor: pointer;
 		&:hover {
-			color: color('primary');
+			color: rgb(17, 173, 71);
 			font-variation-settings: 'FILL' 1;
 		}
 	}
@@ -28,7 +26,7 @@
 		}
 	}
 	.swril-feedback-up-button-selected {
-		color: color('primary');
+		color: rgb(17, 173, 71);
 		font-variation-settings: 'FILL' 1;
 	}
 	.swril-feedback-down-button-selected {

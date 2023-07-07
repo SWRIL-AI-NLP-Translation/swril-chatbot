@@ -8,36 +8,37 @@
 .swril-message {
 	max-width: 90%;
 	display: flex;
-	align-items: flex-end;
+	align-items: center;
 	margin: 0.5rem 0;
 	overflow:visible;
 }
 
 .swril-message-box {
 	background-color: color('secondary');
-	border-radius: 1rem 1rem 1rem 0;
-	padding: 0.7rem;
+	border-radius: 0.8rem;
+	padding: 0.5rem;
+	margin: 0 1rem;
 	position: relative;
 	max-width: 80%;
 	p, a {
 		line-height: 1rem;
-		font-size: 1rem;
+		font-size: 0.9rem;
 		margin: 0;
 		max-width: 100%;
 		word-wrap: break-word;
+		font-weight: lighter;
 	}
 }
 
-.swril-message-bot .swril-message-box {
+.swril-message-user .swril-message-box {
 	background-color: color('primary');
+	p {
+		color: white;
+	}
 }
 
 .swril-message-user {
-	flex-direction: row-reverse;
 	align-self: flex-end;
-	div {
-		border-radius: 1.5rem 1.5rem 0 1.5rem;
-	}
 }
 
 .swril-bot-icon {
