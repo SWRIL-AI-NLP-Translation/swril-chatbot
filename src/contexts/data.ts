@@ -2,7 +2,7 @@ import React from 'react'
 import { DataContextType } from '../types/context'
 import { Cookies } from '../modules/cookies'
 import { getPostalCode } from '../modules/postalCode'
-import { MessageType, defaultMessage } from '../types/messages'
+import { MessageType, defaultMessages } from '../types/messages'
 import { getLanguage } from '../modules/language'
 
 export const getDataContextValue = (): DataContextType => {
@@ -10,7 +10,7 @@ export const getDataContextValue = (): DataContextType => {
 		postalCode: getPostalCode(),
 		language: getLanguage() ?? 'Auto Detect',
 		searchRadius: parseInt(Cookies.get('swril-search-radius') ?? '15'),
-		messages: [defaultMessage],
+		messages: [...defaultMessages],
 	}
 }
 

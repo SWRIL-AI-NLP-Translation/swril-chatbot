@@ -1,10 +1,10 @@
 $colors: (
-	primary: #40B59F,
-	secondary: #C4DAD6,
+	primary: #fb3881,
+	primary-light: #cf708d,
+	primary-lightest: #f9e0e8,
+	secondary: #e1e1e1,
 	background: #ffffff,
-	font: #363361,
-	_lightGrey: #c4d1cc,
-	_mediumGrey: #979797,
+	font: #000000,
 );
 
 @function color($key) {

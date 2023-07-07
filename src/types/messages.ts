@@ -1,7 +1,5 @@
 import { ServiceType } from './chatResponse'
 
-// type MessageContentType = 'Text' | 'Service'
-
 export type MessageType = {
 	text?: string;
 	service?: ServiceType;
@@ -11,8 +9,12 @@ export type MessageType = {
 	positiveFeedback?: boolean;
 }
 
-export const defaultMessage: MessageType = {
-	text: 'My name is swrilie. \n How may I help you?',
+export const defaultMessages: MessageType[] = [{
+	text: 'Hi, my name is swrilie.',
 	bot: true,
 	id: 'Initial',
-}
+}, {
+	text: 'How may I help you today?',
+	bot: true,
+	id: 'Initial',
+}]
